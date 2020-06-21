@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +7,6 @@ using Persistence;
 
 namespace DatingApp.API.Controllers
 {
-    // how do we get to this controller
-    // Attribute Routing
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -20,12 +16,9 @@ namespace DatingApp.API.Controllers
         public ValuesController(DataContext context)
         {
             _context = context;
-
         }
 
         // GET api/values
-        // returns an array
-        // make async because it might take a while
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Value>>> Get()
         {
@@ -33,8 +26,6 @@ namespace DatingApp.API.Controllers
             return Ok(values);
         }
 
-        // GET api/values/5
-        // get specific value
         [HttpGet("{id}")]
         public async Task<ActionResult<string>> Get(int id)
         {
@@ -42,19 +33,16 @@ namespace DatingApp.API.Controllers
             return Ok("value");
         }
 
-        // POST api/values
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
